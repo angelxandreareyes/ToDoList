@@ -11,8 +11,7 @@ import { EditPage } from '../pages/edit/edit';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    EditPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -21,8 +20,7 @@ import { EditPage } from '../pages/edit/edit';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    EditPage
+    HomePage
   ],
   providers: [
     StatusBar,
