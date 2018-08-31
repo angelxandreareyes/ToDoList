@@ -15,7 +15,7 @@ export class HomePage {
 
     add() {
         let prompt = this.alertCtrl.create({
-            title: 'Add Note',
+            title: 'Add Task',
             inputs: [{
                 name: 'title'
             }],
@@ -45,7 +45,7 @@ export class HomePage {
 
     openEditPage(item){
     let prompt = this.alertCtrl.create({
-            title: 'Edit Note',
+            title: 'Edit Task',
             inputs: [{
                 name: 'title'
             }],
