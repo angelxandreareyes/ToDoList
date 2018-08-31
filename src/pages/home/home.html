@@ -8,17 +8,14 @@
 
 <ion-content>
 
-    <ion-item>
-	    <ion-input [(ngModel)]="todo" placeholder="Add task here ... " type="text"></ion-input>
-	    <button ion-button item-end  (click)="add()" >
+	    <button ion-button block round  (click)="add()" >
 	      ADD
 	    </button>
-	</ion-item>
 
     <ion-list>
         <ion-item-sliding *ngFor="let t of todos">
             <ion-item>
-                {{t}}
+                {{t.title}}
             </ion-item>
 
             <ion-item-options side="right">

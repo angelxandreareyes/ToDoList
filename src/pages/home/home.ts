@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { EditPage } from '../edit/edit';
 
 @Component({
@@ -7,28 +7,64 @@ import { EditPage } from '../edit/edit';
     templateUrl: 'home.html',
 })
 export class HomePage {
-    todos: string[] = [];
-    todo: string;
+    todos: any[] = [];
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
     }
 
     add() {
-        this.todos.push(this.todo);
-        this.todo = "";
+        let prompt = this.alertCtrl.create({
+            title: 'Add Note',
+            inputs: [{
+                name: 'title'
+            }],
+            buttons: [
+                {
+                    text: 'Cancel'
+                },
+                {
+                    text: 'Add',
+                    handler: data => {
+                        this.todos.push(data);
+                    }
+                }
+            ]
+        });
+ 
+        prompt.present();
     }
 
     delete(item) {
-        var index = this.todos.indexOf(item, 0);
-        if (index > -1) {
+        let index = this.todos.indexOf(item);
+ 
+        if(index > -1){
             this.todos.splice(index, 1);
         }
     }
 
     openEditPage(item){
-    this.navCtrl.push(EditPage, {
-    data: item
-    });
-    }
-}
+    let prompt = this.alertCtrl.create({
+            title: 'Edit Note',
+            inputs: [{
+                name: 'title'
+            }],
+            buttons: [
+                {
+                    text: 'Cancel'
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        let index = this.todos.indexOf(item);
+ 
+                        if(index > -1){
+                          this.todos[index] = data;
+                        }
+                    }
+                }
+            ]
+        });
+ 
+        prompt.present();    
+}}
